@@ -1,0 +1,180 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── Font Faces ─────────────────────────────────────────────────────────── */
+@font-face {
+  font-family: "Bricolage Grotesque";
+  src: url("/assets/fonts/BricolageGrotesque[opsz,wdth,wght].woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("/assets/fonts/JetBrainsMono[wght].woff2") format("woff2");
+  font-weight: 100 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Sora";
+  src: url("/assets/fonts/Sora[wght].woff2") format("woff2");
+  font-weight: 100 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@layer base {
+  :root {
+    --radius: 0.5rem;
+
+    /* Dark theme: terminal intelligence aesthetic */
+    --background: 0.12 0.008 240;
+    --foreground: 0.93 0.015 220;
+
+    --card: 0.16 0.01 240;
+    --card-foreground: 0.93 0.015 220;
+
+    --popover: 0.18 0.012 240;
+    --popover-foreground: 0.93 0.015 220;
+
+    --primary: 0.72 0.19 155;
+    --primary-foreground: 0.08 0.02 155;
+
+    --secondary: 0.22 0.015 240;
+    --secondary-foreground: 0.85 0.015 220;
+
+    --muted: 0.2 0.012 240;
+    --muted-foreground: 0.55 0.02 230;
+
+    --accent: 0.65 0.22 155;
+    --accent-foreground: 0.08 0.02 155;
+
+    --destructive: 0.65 0.24 25;
+    --destructive-foreground: 0.97 0 0;
+
+    --border: 0.28 0.015 240;
+    --input: 0.24 0.015 240;
+    --ring: 0.72 0.19 155;
+
+    /* Semantic status colors */
+    --success: 0.72 0.19 155;
+    --warning: 0.78 0.2 80;
+    --danger: 0.65 0.24 25;
+    --info: 0.65 0.2 260;
+
+    /* Skill level colors */
+    --skill-beginner: 0.6 0.18 250;
+    --skill-intermediate: 0.72 0.2 85;
+    --skill-advanced: 0.7 0.21 40;
+    --skill-competitive: 0.72 0.2 300;
+
+    /* Chart colors */
+    --chart-1: 0.72 0.19 155;
+    --chart-2: 0.65 0.2 260;
+    --chart-3: 0.72 0.2 85;
+    --chart-4: 0.7 0.21 40;
+    --chart-5: 0.72 0.2 300;
+
+    --sidebar: 0.14 0.01 240;
+    --sidebar-foreground: 0.93 0.015 220;
+    --sidebar-primary: 0.72 0.19 155;
+    --sidebar-primary-foreground: 0.08 0.02 155;
+    --sidebar-accent: 0.2 0.012 240;
+    --sidebar-accent-foreground: 0.85 0.015 220;
+    --sidebar-border: 0.28 0.015 240;
+    --sidebar-ring: 0.72 0.19 155;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: "Sora", sans-serif;
+  }
+
+  code, pre, .font-mono {
+    font-family: "JetBrains Mono", monospace;
+  }
+
+  h1, h2, h3 {
+    font-family: "Bricolage Grotesque", sans-serif;
+  }
+}
+
+/* ─── Custom Utilities ───────────────────────────────────────────────────── */
+@layer utilities {
+  .skill-beginner {
+    background-color: oklch(var(--skill-beginner) / 0.15);
+    color: oklch(var(--skill-beginner));
+    border-color: oklch(var(--skill-beginner) / 0.4);
+  }
+
+  .skill-intermediate {
+    background-color: oklch(var(--skill-intermediate) / 0.15);
+    color: oklch(var(--skill-intermediate));
+    border-color: oklch(var(--skill-intermediate) / 0.4);
+  }
+
+  .skill-advanced {
+    background-color: oklch(var(--skill-advanced) / 0.15);
+    color: oklch(var(--skill-advanced));
+    border-color: oklch(var(--skill-advanced) / 0.4);
+  }
+
+  .skill-competitive {
+    background-color: oklch(var(--skill-competitive) / 0.15);
+    color: oklch(var(--skill-competitive));
+    border-color: oklch(var(--skill-competitive) / 0.4);
+  }
+
+  .tle-low {
+    background-color: oklch(0.72 0.19 155 / 0.15);
+    color: oklch(0.72 0.19 155);
+    border-color: oklch(0.72 0.19 155 / 0.4);
+  }
+
+  .tle-medium {
+    background-color: oklch(0.78 0.2 80 / 0.15);
+    color: oklch(0.78 0.2 80);
+    border-color: oklch(0.78 0.2 80 / 0.4);
+  }
+
+  .tle-high {
+    background-color: oklch(0.65 0.24 25 / 0.15);
+    color: oklch(0.65 0.24 25);
+    border-color: oklch(0.65 0.24 25 / 0.4);
+  }
+
+  .score-high {
+    color: oklch(0.72 0.19 155);
+  }
+
+  .score-mid {
+    color: oklch(0.78 0.2 80);
+  }
+
+  .score-low {
+    color: oklch(0.65 0.24 25);
+  }
+
+  .glow-primary {
+    box-shadow: 0 0 20px oklch(0.72 0.19 155 / 0.2), 0 0 40px oklch(0.72 0.19 155 / 0.08);
+  }
+
+  .terminal-bg {
+    background: oklch(0.1 0.01 240);
+    border: 1px solid oklch(0.28 0.015 240);
+  }
+
+  .grid-noise {
+    background-image:
+      radial-gradient(circle at 20% 50%, oklch(0.72 0.19 155 / 0.04) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, oklch(0.65 0.2 260 / 0.04) 0%, transparent 50%);
+  }
+}
